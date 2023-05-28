@@ -10,7 +10,7 @@ class BST {
     node* left;
     node* right;
   };
- int depthTree1 = 0, depthTree = 0;
+  int depthTree1 = 0, depthTree = 0;
   node* root;
   node* Add(node* rootAdd, const T& valueAdd) {
     if (rootAdd == nullptr) {
@@ -27,10 +27,10 @@ class BST {
     } else {
       rootAdd->counter++;
     }
-   if (depthTree > depthTree1){
+  if (depthTree > depthTree1) {
     depthTree1 = depthTree;
-   }
-   depthTree = 0;
+  }
+  depthTree = 0;
     return rootAdd;
   }
   int Search(node* rootSearch, const T& valueSearch) {
