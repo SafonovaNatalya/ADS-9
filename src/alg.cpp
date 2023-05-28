@@ -16,7 +16,7 @@ BST<std::string> bst;
       word+=k;
       continue;
     }
-    if ((k >= 97 && k <= 122)) {
+    if (k >= 97 && k <= 122) {
       word += k;
     } else {
       if (!word.empty()) {
