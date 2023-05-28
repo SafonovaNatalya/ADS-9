@@ -35,17 +35,17 @@ class BST {
     return root;
   }
   int Search(node* root, const T& value) {
-   int result = 0;
-   if (root->value == value) {
+  int result = 0;
+  if (root->value == value) {
     result = root->counter;
-   }
-   if (root->value > value) {
+  }
+  if (root->value > value) {
     result = Search(root->left, value);
-   }
-   if (root->value < value) {
+  }
+  if (root->value < value) {
     result = Search(root->right, value);
-   }
-   return result;
+  }
+  return result;
   }
 
  public:
