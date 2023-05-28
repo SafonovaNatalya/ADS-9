@@ -59,7 +59,7 @@ class BST {
     root == Add(root, v);
   }
   int search(const T& v) {
-    return Search(const T& v);
+    return Search(root, v);
   }
   int depth() {
     return Depth(root)-1;
