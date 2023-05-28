@@ -3,7 +3,7 @@
 #define INCLUDE_BST_H_
 template<typename T>
 class BST {
-  private:
+ private:
   struct node {
     T value;
     int counter;
@@ -26,7 +26,6 @@ class BST {
     }
     return rootAdd;
   }
-  
   int Search(node* rootSearch, const T& valueSearch) {
     if (rootSearch == nullptr) {
       return o;
@@ -38,7 +37,6 @@ class BST {
       return Search(rootSearch->right, valueSearch);
     }
   }
-  
   int Depth(node* rootDepth) {
     int leftD = 0;
     int rightD = 0;
@@ -54,8 +52,7 @@ class BST {
       return ++leftD;
     }
   }
-  
-  public:
+ public:
   BST() :root(nullptr) {}
   void add(const T& v) {
     root == Add(root, v);
