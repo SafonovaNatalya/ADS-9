@@ -56,7 +56,7 @@ class BST {
  public:
   BST() :root(nullptr) {}
   void add(const T& v) {
-    root == Add(root, v);
+    root = Add(root, v);
   }
   int search(const T& v) {
     return Search(root, v);
