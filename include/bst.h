@@ -10,39 +10,42 @@ class BST {
     node* left;
     node* right;
   };
-  int depthTree1 = 0, depthTree = 0;
+  int mdepthTree = 0, depthTree = 0;
   node* root;
-  node* Add(node* rootAdd, const T& valueAdd) {
-    if (rootAdd == nullptr) {
-      rootAdd = new node;
-      rootAdd->value = valueAdd;
-      rootAdd->left = nullptr;
-      rootAdd->right = nullptr;
-    } else if (rootAdd->value < valueAdd) {
+  node* Add(node* root, const T& value) {
+    if (!root) {
+     root = new node;
+     root->value = value;
+     root->counter = 1;
+     root->right = root->left = nullptr;
+     return root;
+    } else if (root->value > value) {
       depthTree++;
-      rootAdd->right = Add(rootAdd->left, valueAdd);
-    } else if (rootAdd->value > valueAdd) {
+      root->left = Add(root->left, value);
+    } else if (root->value < value) {
       depthTree++;
-      rootAdd->right = Add(rootAdd->right, valueAdd);
+      root->right = Add(root->right, value);
     } else {
-      rootAdd->counter++;
+      root->counter++;
     }
-  if (depthTree > depthTree1) {
-    depthTree1 = depthTree;
+  if (depthTree > mdepthTree) {
+    mdepthTree = depthTree;
   }
   depthTree = 0;
-    return rootAdd;
+    return root;
   }
-  int Search(node* rootSearch, const T& valueSearch) {
-    if (rootSearch == nullptr) {
-      return 0;
-    } else if (rootSearch->value == valueSearch) {
-      return rootSearch->counter;
-    } else if (rootSearch->value < valueSearch) {
-      return Search(rootSearch->left, valueSearch);
-    } else {
-      return Search(rootSearch->right, valueSearch);
-    }
+  int Search(node* root, const T& value) {
+   int result = 0;
+   if (root->value == value) {
+    result = root->counter;
+   }
+   if (root->value > value) {
+    result = Search(root->left, value);
+   }
+   if (root->value < value) {
+    result = Search(root->right, value);
+   }
+   return result;
   }
 
  public:
@@ -54,7 +57,7 @@ class BST {
     return Search(root, v);
   }
   int depth() {
-    return depthTree1;
+    return mdepthTree;
   }
 };
 
