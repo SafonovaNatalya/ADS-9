@@ -17,7 +17,7 @@ BST<std::string> makeTree(const char* filename) {
       k = tolower(k);
       push += k;
     } else {
-      tree.addElement(push);
+      tree.add(push);
       push = "";
     }
   }
