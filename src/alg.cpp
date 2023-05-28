@@ -5,22 +5,23 @@
 #include  <cstdlib>
 #include  "bst.h"
 
-BST<std::string> makeTree(const char* filename) {
-  BST<std::string> tree;
-  std::ifstream file(filename);
-  std::string line, text, push;
-  while (std::getline(file, line)) {
-    text = text + line + " ";
+BST<std::string> makeTree(const char* fname) {
+BST<std::string> bst;
+  std::ifstream file(fname);
+  std::string word = "";
+  if (!file.is_open()) {
+    throw std::string("Error! Can not open file!");
   }
-  for (auto k : text) {
-    if (isalpha(k)) {
-      k = tolower(k);
-      push += k;
-    } else {
-      tree.add(push);
-      push = "";
+  while (!file.eof()) {
+    while (true) {
+      char k = file.get();
+      if ((k >= 97 && k <= 122) || (k >= 65 && k <= 90)) {
+        word += tolower(k);
+      } else {
+        break;
+      }
     }
+    bst.add(word);
   }
-  file.close();
-  return tree;
+  return bst;
 }
