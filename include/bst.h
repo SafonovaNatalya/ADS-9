@@ -10,6 +10,7 @@ class BST {
     node* left;
     node* right;
   };
+ int depthTree1 = 0, depthTree = 0;
   node* root;
   node* Add(node* rootAdd, const T& valueAdd) {
     if (rootAdd == nullptr) {
@@ -18,12 +19,18 @@ class BST {
       rootAdd->left = nullptr;
       rootAdd->right = nullptr;
     } else if (rootAdd->value < valueAdd) {
+      depthTree++;
       rootAdd->right = Add(rootAdd->left, valueAdd);
     } else if (rootAdd->value > valueAdd) {
+      depthTree++;
       rootAdd->right = Add(rootAdd->right, valueAdd);
     } else {
       rootAdd->counter++;
     }
+   if (depthTree > depthTree1){
+    depthTree1 = depthTree;
+   }
+   depthTree = 0;
     return rootAdd;
   }
   int Search(node* rootSearch, const T& valueSearch) {
@@ -37,21 +44,6 @@ class BST {
       return Search(rootSearch->right, valueSearch);
     }
   }
-  int Depth(node* rootDepth) {
-    int leftD = 0;
-    int rightD = 0;
-    if (rootDepth == nullptr) {
-      return 0;
-    } else {
-      leftD = Depth(rootDepth->left);
-      rightD = Depth(rootDepth->right);
-    }
-    if (leftD < rightD) {
-      return ++rightD;
-    } else {
-      return ++leftD;
-    }
-  }
 
  public:
   BST() :root(nullptr) {}
@@ -62,7 +54,7 @@ class BST {
     return Search(root, v);
   }
   int depth() {
-    return Depth(root)-1;
+    return depthTree1;
   }
 };
 
