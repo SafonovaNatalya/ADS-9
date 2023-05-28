@@ -52,6 +52,7 @@ class BST {
       return ++leftD;
     }
   }
+
  public:
   BST() :root(nullptr) {}
   void add(const T& v) {
