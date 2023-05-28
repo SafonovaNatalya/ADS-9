@@ -28,7 +28,7 @@ class BST {
   }
   int Search(node* rootSearch, const T& valueSearch) {
     if (rootSearch == nullptr) {
-      return o;
+      return 0;
     } else if (rootSearch->value == valueSearch) {
       return rootSearch->counter;
     } else if (rootSearch->value < valueSearch) {
@@ -44,7 +44,7 @@ class BST {
       return 0;
     } else {
       leftD = Depth(rootDepth->left);
-      right = Depth(rootDepth->right);
+      rightD = Depth(rootDepth->right);
     }
     if (leftD < rightD) {
       return ++rightD;
